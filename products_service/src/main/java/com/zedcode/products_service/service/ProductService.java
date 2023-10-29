@@ -6,7 +6,6 @@ import com.zedcode.products_service.model.entities.Product;
 import com.zedcode.products_service.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

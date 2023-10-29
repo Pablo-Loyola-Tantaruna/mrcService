@@ -27,17 +27,17 @@ services:
         MYSQL_PASSWORD: 12345
         MYSQL_ROOT_PASSWORD: 12345
       ports:
-        - "3307:3307"
+        - "3306:3306"
       expose:
-        - "3307"
+        - "3306"
   ###POSTGRESS PRODUCTS
     db-products:
       container_name: db-products
       image: postgres:15.2
       restart: unless-stopped
       environment:
-        POSTGRES_DB: ms_inventory
-        POSTGRES_USER: root
+        POSTGRES_DB: ms_products
+        POSTGRES_USER: postgres
         POSTGRES_PASSWORD: 12345
       ports:
         - "5432:5432"

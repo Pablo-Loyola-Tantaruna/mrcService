@@ -18,7 +18,7 @@ public class OrderService {
 
     private final WebClient.Builder webClientBuilder;
 
-    public void placeOrder(OrderRequest orderRequest){
+    public OrderResponse placeOrder(OrderRequest orderRequest){
 
         BaseResponse result = this.webClientBuilder.build()
                 .post()
@@ -33,7 +33,8 @@ public class OrderService {
             order.setOrderNumber(UUID.randomUUID().toString());
             order.setOrderItemsList(orderRequest.getOrderItemsList().stream()
                     .map(orderItemRequest -> mapOrderItemRequestToOrderItem(orderItemRequest, order)).toList());
-            this.orderRepository.save(order);
+            var savedOrder = this.orderRepository.save(order);
+            return mapToOrderResponse(savedOrder);
         }else {
             throw new IllegalArgumentException("Some of the products are not in stock");
         }
